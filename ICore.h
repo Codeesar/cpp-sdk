@@ -29,7 +29,7 @@ namespace alt
 	class ICore
 	{
 	public:
-		static constexpr uint32_t SDK_VERSION = 21;
+		static constexpr uint32_t SDK_VERSION = 22;
 
 		// Shared methods
 		virtual void LogInfo(StringView str) = 0;
@@ -59,6 +59,7 @@ namespace alt
 
 		virtual bool FileExists(StringView path) = 0;
 		virtual String FileRead(StringView path) = 0;
+		virtual String GetRootPath() = 0;
 
 		virtual IResource* GetResource(StringView name) = 0;
 
@@ -99,6 +100,9 @@ namespace alt
 		virtual Array<Ref<IPlayer>> GetPlayersByName(StringView name) const = 0;
 
 		virtual uint32_t GetNetTime() const = 0;
+
+#elif ALT_CLIENT_API // Client methods
+
 #endif
 
 		static ICore& Instance() { return *_instance(); }

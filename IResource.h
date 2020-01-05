@@ -4,6 +4,8 @@
 #include "types/String.h"
 #include "types/MValue.h"
 
+#include "ILocalStorage.h"
+
 namespace alt
 {
 	class IScriptRuntime;
@@ -52,6 +54,12 @@ namespace alt
 		virtual MValueDict GetExports() const = 0;
 
 		virtual void SetExports(MValueDict exports) = 0;
+
+#ifdef ALT_SERVER_API
+
+#else // Client
+		virtual ILocalStorage* GetLocalStorage() const = 0;
+#endif
 
 	protected:
 		virtual ~IResource() = default;

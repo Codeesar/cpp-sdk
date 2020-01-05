@@ -118,7 +118,7 @@ namespace alt
 
 		template<class U>
 		std::enable_if_t<std::is_const_v<T>, RefBase<RefStore<const U>>>
-			As() const { return RefBase<RefStore<const U>>(dynamic_cast<const U*>(Get())); }
+			GetAltObject() const { return RefBase<RefStore<const U>>(dynamic_cast<const U*>(Get())); }
 
 	private:
 		template<class U> friend class RefStore;

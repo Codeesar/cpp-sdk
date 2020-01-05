@@ -5,15 +5,14 @@
 #include "../Ref.h"
 
 #include "CEvent.h"
+#include "../script-objects/IWebView.h"
 
 namespace alt
 {
-	class CWebView;
-
 	class CWebViewEvent : public CEvent
 	{
 	public:
-		CWebViewEvent(CWebView* _target, StringView _name, const MValueArgs& _args) :
+		CWebViewEvent(IWebView* _target, StringView _name, const MValueArgs& _args) :
 			CEvent(Type::WEB_VIEW_EVENT),
 			target(_target),
 			name(_name),
@@ -22,12 +21,12 @@ namespace alt
 
 		}
 
-		CWebView* GetTarget() const { return target; }
+		IWebView* GetTarget() const { return target; }
 		StringView GetName() const { return name; }
 		const MValueArgs& GetArgs() const { return args; }
 
 	private:
-		CWebView* target;
+		IWebView* target;
 		String name;
 		MValueArgs args;
 	};
